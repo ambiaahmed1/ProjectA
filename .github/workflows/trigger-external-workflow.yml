@@ -1,0 +1,26 @@
+name: Trigger Workflow in Repository B
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger Workflow in Repository A
+        run: |
+          REPO_A_OWNER=ambiaahmed1
+          REPO_A_NAME=ProjectA
+          GITHUB_TOKEN=$GITHUB_TOKEN  # Personal Access Token with the necessary permissions
+
+          curl -X POST \
+            -H "Authorization: token $GITHUB_TOKEN" \
+            -H "Accept: application/vnd.github.everest-preview+json" \
+            https://api.github.com/repos/$REPO_A_OWNER/$REPO_A_NAME/dispatches \
+            --data '{"event_type": "trigger-external-workflow"}'
+
+
+
