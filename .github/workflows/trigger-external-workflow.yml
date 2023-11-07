@@ -14,7 +14,7 @@ jobs:
         run: |
           REPO_A_OWNER=ambiaahmed1
           REPO_A_NAME=ProjectA
-          GITHUB_TOKEN=$GITHUB_TOKEN  # Personal Access Token with the necessary permissions
+          GITHUB_TOKEN=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
 
           curl -X POST \
             -H "Authorization: token $GITHUB_TOKEN" \
